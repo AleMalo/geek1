@@ -1,11 +1,12 @@
 import tkinter as tk
-import time
+from plansza import *
 from settings import *
 
 password1 = ''
 password2 = ''
 
-class LoginPage():
+
+class LoginPage:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title('Log in')
@@ -32,11 +33,13 @@ class LoginPage():
         self.info_text.place(relx=0.5, rely=0.625, anchor='center')
 
         self.player_1_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.change_players)
-        self.player_1_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3, activeforeground=PLAYER1COLOR2)
+        self.player_1_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
+                                       activeforeground=PLAYER1COLOR2)
         self.player_1_button.place(relx=0.5, rely=0.75, anchor='center', relwidth=0.333, relheight=0.067)
 
         self.player_2_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.enter_game)
-        self.player_2_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR1, activebackground=PLAYER1COLOR1, activeforeground=PLAYER1COLOR2)
+        self.player_2_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR1, activebackground=PLAYER1COLOR1,
+                                       activeforeground=PLAYER1COLOR2)
         self.player_2_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
 
         self.root.mainloop()
@@ -68,6 +71,7 @@ class LoginPage():
             print('password is wrong')
         else:
             self.info_text.config(text='☺')
+            self.run_pygame_game()
             print(password1)
 
     def erase_input(self, event=None):
@@ -75,3 +79,10 @@ class LoginPage():
             self.password_entry.config(fg=PLAYER1COLOR1)
             self.password_entry.delete(0, tk.END)
             print('erased')
+
+    def run_pygame_game(self):
+        self.root.destroy()
+        Plansza()
+
+
+LoginPage()
