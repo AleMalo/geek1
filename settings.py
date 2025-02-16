@@ -4,7 +4,7 @@ PLAYER1COLOR3 = '#555555'
 
 # #69E599, #246363, #4DABC7, #FFA2BD, #5B4E77
 
-INFO = '''Your password should contain at least 1 in each category:
+INFO = '''Your password should contain 15 symbols with at least 1 in each category:
 small letters, big letters, numbers, symbols'''
 
 FONT1 = ('Comic Sans MS', 30, 'bold')
