@@ -11,13 +11,25 @@ class LoginPage:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title('Log in')
-        self.root.geometry('600x600')
+        self.root.geometry('1440x810')
         self.root.configure(bg=PLAYER1COLOR1)
         self.root.resizable(False, False)
 
         # starting page
 
+        self.game_title = tk.Label(self.root, text='[GAME NAME]', font=FONT1)
+        self.game_title.configure(bg=PLAYER1COLOR1, fg=PLAYER1COLOR3)
+        self.game_title.place(relx=0.5, rely=0.3, anchor='center')
 
+        self.start_button = tk.Button(self.root, text='START', font=FONT2, bd=0)
+        self.start_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
+                                    activeforeground=PLAYER1COLOR2)
+        self.start_button.place(relx=0.5, rely=0.5, anchor='center', relwidth=0.333, relheight=0.1)
+
+        self.how_button = tk.Button(self.root, text='HOW TO PLAY', font=FONT2, bd=0)
+        self.how_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
+                                    activeforeground=PLAYER1COLOR2)
+        self.how_button.place(relx=0.5, rely=0.625, anchor='center', relwidth=0.333, relheight=0.1)
 
         # login page elements - hidden at the start
 
@@ -39,10 +51,10 @@ class LoginPage:
         self.info_text.configure(bg=PLAYER1COLOR1, fg=PLAYER1COLOR3)
         self.info_text.place(relx=0.5, rely=-0.625, anchor='center')
 
-        self.player_1_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.change_players)
-        self.player_1_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
-                                       activeforeground=PLAYER1COLOR2)
-        self.player_1_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
+        self.start_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.change_players)
+        self.start_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
+                                    activeforeground=PLAYER1COLOR2)
+        self.start_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
 
         self.player_2_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.enter_game)
         self.player_2_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR1, activebackground=PLAYER1COLOR1,
@@ -64,7 +76,7 @@ class LoginPage:
             self.enter_text.config(bg=PLAYER1COLOR3, fg=PLAYER1COLOR1)
             self.password_entry.config(fg=PLAYER1COLOR1)
             self.info_text.config(bg=PLAYER1COLOR3, fg=PLAYER1COLOR1)
-            self.player_1_button.place(rely=-0.75)
+            self.start_button.place(rely=-0.75)
             self.player_2_button.place(rely=0.75)
             self.password_entry.delete(0, tk.END)
             print(password1)
