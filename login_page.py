@@ -21,10 +21,10 @@ class LoginPage:
         self.game_title.configure(bg=PLAYER1COLOR1, fg=PLAYER1COLOR3)
         self.game_title.place(relx=0.5, rely=0.3, anchor='center')
 
-        self.start_button = tk.Button(self.root, text='START', font=FONT2, bd=0)
-        self.start_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
-                                    activeforeground=PLAYER1COLOR2)
-        self.start_button.place(relx=0.5, rely=0.5, anchor='center', relwidth=0.333, relheight=0.1)
+        self.game_button = tk.Button(self.root, text='START', font=FONT2, bd=0, command=self.start_tk_game)
+        self.game_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
+                                   activeforeground=PLAYER1COLOR2)
+        self.game_button.place(relx=0.5, rely=0.5, anchor='center', relwidth=0.333, relheight=0.1)
 
         self.how_button = tk.Button(self.root, text='HOW TO PLAY', font=FONT2, bd=0)
         self.how_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
@@ -51,15 +51,15 @@ class LoginPage:
         self.info_text.configure(bg=PLAYER1COLOR1, fg=PLAYER1COLOR3)
         self.info_text.place(relx=0.5, rely=-0.625, anchor='center')
 
-        self.start_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.change_players)
-        self.start_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
+        self.change_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.change_players)
+        self.change_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR3, activebackground=PLAYER1COLOR3,
+                                     activeforeground=PLAYER1COLOR2)
+        self.change_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
+
+        self.start_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.enter_game)
+        self.start_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR1, activebackground=PLAYER1COLOR1,
                                     activeforeground=PLAYER1COLOR2)
         self.start_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
-
-        self.player_2_button = tk.Button(self.root, text='CONFIRM', font=FONT2, bd=0, command=self.enter_game)
-        self.player_2_button.configure(bg=PLAYER1COLOR2, fg=PLAYER1COLOR1, activebackground=PLAYER1COLOR1,
-                                       activeforeground=PLAYER1COLOR2)
-        self.player_2_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
 
         self.root.mainloop()
 
@@ -76,8 +76,8 @@ class LoginPage:
             self.enter_text.config(bg=PLAYER1COLOR3, fg=PLAYER1COLOR1)
             self.password_entry.config(fg=PLAYER1COLOR1)
             self.info_text.config(bg=PLAYER1COLOR3, fg=PLAYER1COLOR1)
-            self.start_button.place(rely=-0.75)
-            self.player_2_button.place(rely=0.75)
+            self.change_button.place(rely=-0.75)
+            self.start_button.place(rely=0.75)
             self.password_entry.delete(0, tk.END)
             print(password1)
 
@@ -103,5 +103,15 @@ class LoginPage:
     def run_pygame_game(self):
         self.root.destroy()
         Plansza()
+
+    def start_tk_game(self):
+        self.game_title.place(rely=-0.3)
+        self.game_button.place(rely=-0.5)
+        self.how_button.place(rely=-0.625)
+        self.player_text.place(rely=0.25)
+        self.enter_text.place(rely=0.425)
+        self.password_entry.place(rely=0.5)
+        self.info_text.place(rely=0.625)
+        self.change_button.place(rely=0.75)
 
 LoginPage()
