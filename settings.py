@@ -1,6 +1,14 @@
-PLAYER1COLOR1 = '#aaaaaa'
-PLAYER1COLOR2 = '#7f7f7f'
-PLAYER1COLOR3 = '#555555'
+P1C1 = '#b687c9'
+P1C2 = '#4bcbca'
+P1C3 = '#353a4c'
+
+P2C1 = '#f5abba'
+P2C2 = '#f7799a'
+P2C3 = '#90314b'
+
+GC1 = '#414d3c'
+GC2 = '#57838a'
+GC3 = '#d0d0b6'
 
 # #69E599, #246363, #4DABC7, #FFA2BD, #5B4E77
 
