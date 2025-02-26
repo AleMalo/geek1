@@ -10,9 +10,9 @@ class Player:
         self.speed = 3
         self.number = number
         if number == 1:
-            self.image = pygame.image.load('haker1.png')
+            self.image = pygame.image.load('hacker1.PNG')
         else:
-            self.image = pygame.image.load('haker2.png')
+            self.image = pygame.image.load('hacker2.PNG')
 
     def move(self, keys):
         if self.number == 1:
@@ -53,8 +53,8 @@ class Chest:
         self.x = x
         self.y = y
         if number == 1:
-            self.image1 = pygame.image.load('chest_closed.png')
-            self.image2 = pygame.image.load('chest_open.png')
+            self.image1 = pygame.image.load('chest_closed1.png')
+            self.image2 = pygame.image.load('chest_open1.png')
         else:
             self.image1 = pygame.image.load('chest_closed2.png')
             self.image2 = pygame.image.load('chest_open2.png')
