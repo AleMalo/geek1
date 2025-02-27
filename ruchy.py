@@ -2,6 +2,10 @@ import pygame
 import math
 import random
 
+password1 = ''
+chest_answers1 = []
+password2 = ''
+chest_answers2 = []
 
 class Player:
     def __init__(self, number, x, y):
@@ -10,21 +14,12 @@ class Player:
         self.speed = 3
         self.number = number
         if number == 1:
-            self.image = pygame.image.load('hacker1.PNG')
+            self.image = pygame.image.load('images/hacker1.PNG')
         else:
-            self.image = pygame.image.load('hacker2.PNG')
+            self.image = pygame.image.load('images/hacker2.PNG')
 
     def move(self, keys):
         if self.number == 1:
-            if keys[pygame.K_RIGHT]:
-                self.x += self.speed
-            if keys[pygame.K_LEFT]:
-                self.x -= self.speed
-            if keys[pygame.K_UP]:
-                self.y -= self.speed
-            if keys[pygame.K_DOWN]:
-                self.y += self.speed
-        else:
             if keys[pygame.K_d]:
                 self.x += self.speed
             if keys[pygame.K_a]:
@@ -33,6 +28,15 @@ class Player:
                 self.y -= self.speed
             if keys[pygame.K_s]:
                 self.y += self.speed
+        else:
+            if keys[pygame.K_RIGHT]:
+                self.x += self.speed
+            if keys[pygame.K_LEFT]:
+                self.x -= self.speed
+            if keys[pygame.K_UP]:
+                self.y -= self.speed
+            if keys[pygame.K_DOWN]:
+                self.y += self.speed
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
@@ -40,7 +44,7 @@ class Player:
 
 class Bg:
     def __init__(self, x, y):
-        self.image = pygame.image.load('background.png')
+        self.image = pygame.image.load('images/background.png')
         self.x = x
         self.y = y
 
@@ -49,15 +53,21 @@ class Bg:
 
 
 class Chest:
-    def __init__(self, x, y, number):
+    def __init__(self, x, y, number, id):
         self.x = x
         self.y = y
+        self.id = id
+        self.section = ''
         if number == 1:
-            self.image1 = pygame.image.load('chest_closed1.png')
-            self.image2 = pygame.image.load('chest_open1.png')
+            self.image1 = pygame.image.load('images/chest_closed1.PNG')
+            self.image2 = pygame.image.load('images/chest_open1.PNG')
+            if len(chest_answers1) == 5:
+                self.section = chest_answers1[self.id]
         else:
-            self.image1 = pygame.image.load('chest_closed2.png')
-            self.image2 = pygame.image.load('chest_open2.png')
+            self.image1 = pygame.image.load('images/chest_closed2.PNG')
+            self.image2 = pygame.image.load('images/chest_open2.PNG')
+            if len(chest_answers1) == 5:
+                self.section = chest_answers2[self.id]
 
         self.image = self.image1
 

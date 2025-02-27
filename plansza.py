@@ -8,8 +8,8 @@ class Plansza:
         background = Bg(0, 0)
         player1 = Player(1, 0, 0)
         player2 = Player(2, 1350, 630)
-        chest_player1 = [Chest(random.randint(50, 1390), random.randint(50, 760), 1) for _ in range(5)]
-        chest_player2 = [Chest(random.randint(50, 1390), random.randint(50, 760), 2) for _ in range(5)]
+        chest_player1 = [Chest(random.randint(50, 1390), random.randint(50, 760), 1, _) for _ in range(5)]
+        chest_player2 = [Chest(random.randint(50, 1390), random.randint(50, 760), 2, _) for _ in range(5)]
 
         running = True
         while running:
