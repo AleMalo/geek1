@@ -12,8 +12,12 @@ GC3 = '#d0d0b6'
 
 # #69E599, #246363, #4DABC7, #FFA2BD, #5B4E77
 
-INFO = '''Your password should contain 15 symbols with at least 1 in each category:
+INFO = '''Your password should contain 15 characters with at least 1 in each category:
 small letters, big letters, numbers, symbols'''
+
+RULES = '''something
+for
+sure'''
 
 FONT1 = ('Comic Sans MS', 30, 'bold')
 FONT2 = ('Comic Sans MS', 15)
