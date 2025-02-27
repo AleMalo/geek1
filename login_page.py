@@ -81,7 +81,7 @@ class LoginPage:
 
         # button
 
-        self.back_button = tk.Button(self.root, text='BACK', font=FONT2, borderwidth=0)
+        self.back_button = tk.Button(self.root, text='BACK', font=FONT2, borderwidth=0, command=self.return_to_start)
         self.back_button.configure(bg=GC2, fg=GC3, activebackground=GC3, activeforeground=GC2)
         self.back_button.place(relx=0.5, y=-760, relwidth=0.33, height=75, anchor='center')
 
@@ -192,6 +192,23 @@ class LoginPage:
         self.co2_label.place(y=510)
         self.cc2_label.place(y=510)
         self.p2_label.place(y=510)
+
+    def return_to_start(self):
+        self.game_title.place(rely=0.3)
+        self.game_button.place(rely=0.5)
+        self.how_button.place(rely=0.625)
+
+        self.rules_label.place(y=-343.75)
+        self.p1_images_label.place(y=-76)
+        self.p2_images_label.place(y=-377)
+        self.back_button.place(y=-725)
+
+        self.co1_label.place(y=-205)
+        self.cc1_label.place(y=-205)
+        self.p1_label.place(y=-205)
+        self.co2_label.place(y=-510)
+        self.cc2_label.place(y=-510)
+        self.p2_label.place(y=-510)
 
 
 LoginPage()
