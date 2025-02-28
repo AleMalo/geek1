@@ -1,3 +1,5 @@
+import pygame.font
+
 P1C1 = '#b687c9'
 P1C2 = '#4bcbca'
 P1C3 = '#353a4c'
@@ -19,8 +21,9 @@ RULES = '''something
 for
 sure'''
 
-FONT1 = ('Comic Sans MS', 30, 'bold')
-FONT2 = ('Comic Sans MS', 15)
+FONT1 = ('Comic Sans MS', 35, 'bold')
+FONT2 = ('Comic Sans MS', 25)
+FONT3 = ('Comic Sans MS', 15)
 
 def CHECK_WITH_RULES(password):
     if len(password) != 15:
