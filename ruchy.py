@@ -53,21 +53,20 @@ class Bg:
 
 
 class Chest:
-    def __init__(self, x, y, number, id):
+    def __init__(self, x, y, number, clues, id):
         self.x = x
         self.y = y
         self.id = id
-        self.section = ''
+        self.opened = False
+        if len(clues) == 5:
+            self.section = clues[id]
+            print('done', self.section)
         if number == 1:
             self.image1 = pygame.image.load('images/chest_closed1.PNG')
             self.image2 = pygame.image.load('images/chest_open1.PNG')
-            if len(chest_answers1) == 5:
-                self.section = chest_answers1[self.id]
         else:
             self.image1 = pygame.image.load('images/chest_closed2.PNG')
             self.image2 = pygame.image.load('images/chest_open2.PNG')
-            if len(chest_answers1) == 5:
-                self.section = chest_answers2[self.id]
 
         self.image = self.image1
 
@@ -75,9 +74,31 @@ class Chest:
         distance = math.sqrt((self.x - player.x) ** 2 + (self.y - player.y) ** 2)
         return distance < 80
 
-    def open(self, player, keys, open_key):
+    def open(self, player, keys, open_key, clues, screen):
         if self.is_near(player) and keys[open_key]:
+            self.opened = True
             self.image = self.image2
+            clues[self.id].draw(self, screen)
+            print('clue is drawn')
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+
+
+class Clue:
+    def __init__(self, x, y, section, font, color, id):
+        self.x = x + 22
+        self.y = y + 22
+        self.section = section
+        self.font = font
+        self.color = color
+        self.id = id
+
+        self.text = self.font.render(f'{self.id}: {self.section}', True, self.color)
+        self.text_rect = self.text.get_rect()
+        self.text_rect.center = (self.x, self.y)
+
+    def draw(self, chest, screen):
+        if chest.opened:
+            screen.blit(self.text, self.text_rect)
+            print('x:', self.x, self.section)
