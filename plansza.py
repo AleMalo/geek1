@@ -1,5 +1,7 @@
+import pygame
 from ruchy import *
 from settings import *
+from winners_panel import *
 
 class Plansza:
     def __init__(self, clues1, clues2):
@@ -57,6 +59,10 @@ class Plansza:
                 clues_player1[i].draw(chest_player1[i], screen)
                 clues_player2[i].draw(chest_player2[i], screen)
 
+            if passed_time > 120:
+                running = False
+                pygame.quit()
+                WinnerPanel()
 
             player1.draw(screen)
             player2.draw(screen)
