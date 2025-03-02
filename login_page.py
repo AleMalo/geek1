@@ -16,12 +16,13 @@ class LoginPage:
         self.chest_answers1 = []
         self.password2 = ''
         self.chest_answers2 = []
+        self.player_on = 1
 
         # START PAGE
 
         # text
 
-        self.game_title = tk.Label(self.root, text='[GAME NAME]', font=FONT1)
+        self.game_title = tk.Label(self.root, text='[GAME NAME]', font=FONT2)
         self.game_title.configure(bg=GC1, fg=GC3)
         self.game_title.place(relx=0.5, rely=0.3, anchor='center')
 
@@ -67,15 +68,15 @@ class LoginPage:
 
         # text
 
-        self.rules_label = tk.Label(self.root, text=RULES, font=FONT3)
+        self.rules_label = tk.Label(self.root, text=RULES, font=FONT4)
         self.rules_label.configure(bg=GC1, fg=GC3)
         self.rules_label.place(relx=0.25, y=-343.75, anchor='center')
 
-        self.p1_images_label = tk.Label(self.root, text='Player 1 Elements', font=FONT2)
+        self.p1_images_label = tk.Label(self.root, text='Player 1 Elements', font=FONT3)
         self.p1_images_label.configure(bg=GC1, fg=GC3)
         self.p1_images_label.place(relx=0.75, y=-56, anchor='center')
 
-        self.p2_images_label = tk.Label(self.root, text='Player 2 Elements', font=FONT2)
+        self.p2_images_label = tk.Label(self.root, text='Player 2 Elements', font=FONT3)
         self.p2_images_label.configure(bg=GC1, fg=GC3)
         self.p2_images_label.place(relx=0.75, y=-56, anchor='center')
 
@@ -90,22 +91,22 @@ class LoginPage:
 
         # text
 
-        self.player_text = tk.Label(self.root, text='PLAYER 1', font=FONT1)
-        self.player_text.configure(bg=P1C1, fg=P1C3)
+        self.player_text = tk.Label(self.root, text='PLAYER 1', font=FONT2)
+        self.player_text.configure(bg=GC1, fg=GC3)
         self.player_text.place(relx=0.5, rely=-0.25, anchor='center')
 
-        self.enter_text = tk.Label(self.root, text='Enter your password:', font=FONT3)
-        self.enter_text.configure(bg=P1C1, fg=P1C3)
+        self.enter_text = tk.Label(self.root, text='Enter your password:', font=FONT4)
+        self.enter_text.configure(bg=GC1, fg=GC3)
         self.enter_text.place(relx=0.5, rely=-0.425, anchor='center')
 
-        self.info_text = tk.Label(self.root, text=INFO, font=FONT3, justify='center')
-        self.info_text.configure(bg=P1C1, fg=P1C3)
+        self.info_text = tk.Label(self.root, text=INFO, font=FONT4, justify='center')
+        self.info_text.configure(bg=GC1, fg=GC3)
         self.info_text.place(relx=0.5, rely=-0.625, anchor='center')
 
         # entry
 
-        self.password_entry = tk.Entry(self.root, show='*', font=FONT3)
-        self.password_entry.configure(bg=P1C2, fg=P1C1)
+        self.password_entry = tk.Entry(self.root, show='*', font=FONT4)
+        self.password_entry.configure(bg=GC2, fg=GC3)
         self.password_entry.place(relx=0.5, rely=-0.5, anchor='center', relwidth=0.5, relheight=0.067)
 
         # buttons
@@ -113,14 +114,14 @@ class LoginPage:
         self.password_entry.bind('<Button-1>', self.erase_input)
 
         self.change_button = tk.Button(self.root, text='CONFIRM', font=FONT3, bd=0, command=self.change_players)
-        self.change_button.configure(bg=P1C2, fg=P1C3, activebackground=P1C3,
-                                     activeforeground=P1C2)
-        self.change_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
+        self.change_button.configure(bg=GC2, fg=GC3, activebackground=GC3,
+                                     activeforeground=GC2)
+        self.change_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, height=75)
 
         self.start_button = tk.Button(self.root, text='CONFIRM', font=FONT3, bd=0, command=self.enter_game)
-        self.start_button.configure(bg=P2C2, fg=P2C3, activebackground=P2C3,
-                                    activeforeground=P2C2)
-        self.start_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, relheight=0.067)
+        self.start_button.configure(bg=GC2, fg=GC3, activebackground=GC3,
+                                    activeforeground=GC2)
+        self.start_button.place(relx=0.5, rely=-0.75, anchor='center', relwidth=0.333, height=75)
 
         self.root.mainloop()
 
@@ -132,13 +133,8 @@ class LoginPage:
             # self.password_entry.bind('<Button-1>', self.erase_input)
             print('password is wrong')
         else:
-            self.root.config(bg=P2C1)
-            self.player_text.config(text='PLAYER 2', bg=P2C1, fg=P2C3)
-            self.enter_text.config(bg=P2C1, fg=P2C3)
-            self.password_entry.config(bg=P2C2, fg=P2C3)
-            self.info_text.config(bg=P2C1, fg=P2C3)
-            self.change_button.place(rely=-0.75)
-            self.start_button.place(rely=0.75)
+            self.player_on = 2
+            self.player_text.config(text='PLAYER 2')
             self.password_entry.delete(0, tk.END)
             self.p1 = self.password1
             self.chest_answers1 = [self.p1[:3], self.p1[3:6], self.p1[6:9], self.p1[9:12], self.p1[12:]]
@@ -160,7 +156,10 @@ class LoginPage:
 
     def erase_input(self, event=None):
         if self.password_entry.cget('fg') == '#ff0000':
-            self.password_entry.config(fg=P1C1)
+            if self.player_on == 1:
+                self.password_entry.config(fg=P1C1)
+            if self.player_on == 2:
+                self.password_entry.config(fg=P2C3)
             self.password_entry.delete(0, tk.END)
             print('erased')
 
@@ -169,7 +168,7 @@ class LoginPage:
         Plansza(self.chest_answers1, self.chest_answers2)
 
     def start_tk_game(self):
-        self.root.config(bg=P1C1)
+        self.root.config(bg=GC1)
         self.game_title.place(rely=-0.3)
         self.game_button.place(rely=-0.5)
         self.how_button.place(rely=-0.625)
