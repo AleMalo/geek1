@@ -1,6 +1,7 @@
 import pygame
 import math
 import random
+import time
 
 password1 = ''
 chest_answers1 = []
@@ -94,7 +95,7 @@ class Clue:
         self.color = color
         self.id = id
 
-        self.text = self.font.render(f'{self.id}: {self.section}', True, self.color)
+        self.text = self.font.render(f'{self.id + 1}: {self.section}', True, self.color)
         self.text_rect = self.text.get_rect()
         self.text_rect.center = (self.x, self.y)
 
