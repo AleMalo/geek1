@@ -21,9 +21,10 @@ RULES = '''something
 for
 sure'''
 
-FONT1 = ('Comic Sans MS', 35, 'bold')
-FONT2 = ('Comic Sans MS', 25)
-FONT3 = ('Comic Sans MS', 15)
+FONT1 = ('Arial', 50, 'bold')
+FONT2 = ('Arial', 35, 'bold')
+FONT3 = ('Arial', 25)
+FONT4 = ('Arial', 15)
 
 def CHECK_WITH_RULES(password):
     if len(password) != 15:
